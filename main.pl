@@ -1,5 +1,2 @@
- while ($arg = shift @ARGV)
- {
- 	print "$arg\n";
- }
-
+use strict;
+use warnings;	
