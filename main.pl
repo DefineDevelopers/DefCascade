@@ -32,9 +32,13 @@ unless ($input_unit =~ m/^[a-z]+$/ && $output_unit =~ m/^[a-z]+$/ && $multiplier
 foreach $file_name (@ARGV)
 {
 	open(INPUTFILE,'<',$file_name) or die "can't open $file_name : $!\n";
-		open(OUTPUTFILE,'>','D'."$file_name") or die "can't open $file_name : $!\n";
+		open(OUTPUTFILE,'>','res.css') or die "can't open $file_name : $!\n";
 		
-		#code
+			foreach (<INPUTFILE>)
+			{
+				s/([.0-9]+)(\s*)$input_unit/(int($1*$multiplier*1000)\/1000).$output_unit/eg;
+				print OUTPUTFILE;
+			}
 
 		close OUTPUTFILE;
 	close INPUTFILE;
