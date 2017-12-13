@@ -28,6 +28,14 @@ foreach $file_name (@ARGV)
 			print('Print how many ',substr($output_unit, 0, -1), ' are in one ', $input_unit);
 			$multiplier = <STDIN>;
 
+			unless ($input_unit =~ m/^[a-z]+$/ && $output_unit =~ m/^[a-z]+$/ && $multiplier =~ m/^\d+(\.\d+)?$/)
+			{
+				print("bad unit/multiplier name. Closing\n");
+				close OUTPUTFILE;
+				close INPUTFILE;
+				exit 2;
+			}
+
 		close OUTPUTFILE;
 	close INPUTFILE;
 }
