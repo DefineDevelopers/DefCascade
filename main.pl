@@ -1,3 +1,5 @@
+#!/usr/bin/perl
+
 use strict;
 use warnings;
 
@@ -23,7 +25,7 @@ foreach $file_name (@ARGV)
 			print("Print Output unit name\n");
 			$output_unit = <STDIN>;
 
-			print("Print how many ",substr($output_unit, 0, -1), " in one ", $input_unit);
+			print('Print how many ',substr($output_unit, 0, -1), ' are in one ', $input_unit);
 			$multiplier = <STDIN>;
 
 		close OUTPUTFILE;
