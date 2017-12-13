@@ -8,15 +8,23 @@ if (($#ARGV + 1) == 0)
 }
 
 my $file_name;
+my $input_unit;
+my $output_unit;
+my $multiplier;
 
 foreach $file_name (@ARGV)
 {
-	open(INPUTFILE,'<',$file_name) or die "can't open $file_name : $!";
-		open(OUTPUTFILE,'>','D'."$file_name") or die "can't open $file_name : $!";
+	open(INPUTFILE,'<',$file_name) or die "can't open $file_name : $!\n";
+		open(OUTPUTFILE,'>','D'."$file_name") or die "can't open $file_name : $!\n";
+			
+			print("Print Input unit name\n");
+			$input_unit = <STDIN>;
 
+			print("Print Output unit name\n");
+			$output_unit = <STDIN>;
 
-		#code
-
+			print("Print how many ",substr($output_unit, 0, -1), " in one ", $input_unit);
+			$multiplier = <STDIN>;
 
 		close OUTPUTFILE;
 	close INPUTFILE;
