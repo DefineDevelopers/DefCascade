@@ -14,14 +14,16 @@ my $input_unit;
 my $output_unit;
 my $multiplier;
 
-print("Print Input unit name\n");
+print("Print unit name which is in input-css-file\n");
 $input_unit = <STDIN>;
 
-print("Print Output unit name\n");
+print("Print unit name which will be in output-css-file\n");
 $output_unit = <STDIN>;
 
 print('Print how many ',substr($output_unit, 0, -1), ' are now in one ', $input_unit);
 $multiplier = <STDIN>;
+
+chomp($input_unit,$output_unit,$multiplier);
 
 unless ($input_unit =~ m/^[a-z]+$/ && $output_unit =~ m/^[a-z]+$/ && $multiplier =~ m/^\d+(\.\d+)?$/)
 {
@@ -33,7 +35,7 @@ foreach $file_name (@ARGV)
 {
 	open(INPUTFILE,'<',$file_name) or die "can't open $file_name : $!\n";
 		open(OUTPUTFILE,'>','res.css') or die "can't open $file_name : $!\n";
-		
+			
 			foreach (<INPUTFILE>)
 			{
 				s/([.0-9]+)(\s*)$input_unit/(int($1*$multiplier*1000)\/1000).$output_unit/eg;
