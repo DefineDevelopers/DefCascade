@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use File::Basename;
 
 if (($#ARGV + 1) == 0)
 {
@@ -10,6 +11,7 @@ if (($#ARGV + 1) == 0)
 }
 
 my $file_name;
+my $new_file_name;
 my $input_unit;
 my $output_unit;
 my $multiplier;
@@ -34,8 +36,9 @@ unless ($input_unit =~ m/^[a-z]+$/ && $output_unit =~ m/^[a-z]+$/ && $multiplier
 foreach $file_name (@ARGV)
 {
 	open(INPUTFILE,'<',$file_name) or die "can't open $file_name : $!\n";
-		open(OUTPUTFILE,'>','res.css') or die "can't open $file_name : $!\n";
-			
+	$new_file_name = 'D' . basename($file_name);
+		open(OUTPUTFILE,'>',$new_file_name) or die "can't open $file_name : $!\n";
+		
 			foreach (<INPUTFILE>)
 			{
 				s/([.0-9]+)(\s*)$input_unit/(int($1*$multiplier*1000)\/1000).$output_unit/eg;
