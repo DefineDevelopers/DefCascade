@@ -50,7 +50,7 @@ $multiplier = <STDIN>;
 
 chomp($input_unit,$output_unit,$multiplier);
 
-unless ( $multiplier =~ m/^\d+(\.\d+)?$/ ) {
+unless ( check_mul_num $multiplier ) {
 	print("Invalid multiplier name. Closing\n");
 	exit 2;
 }
