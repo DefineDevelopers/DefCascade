@@ -17,7 +17,11 @@ my $output_unit;
 my $multiplier;
 
 
-# sub check_unit_name { }
+sub check_unit_name {
+	my $unit = $_[0];
+	unless ( $unit =~ m/^[a-z]+$/ ) { return; }
+	return 1;
+}
 # sub check_mul_num { }
 
 print("Print unit name which is in input-css-file\n");
