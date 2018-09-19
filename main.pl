@@ -33,18 +33,16 @@ unless ($input_unit =~ m/^[a-z]+$/ && $output_unit =~ m/^[a-z]+$/ && $multiplier
 	exit 2;
 }
 
-foreach $file_name (@ARGV)
-{
-	open(INPUTFILE,'<',$file_name) or die "can't open $file_name : $!\n";
-	$new_file_name = 'D' . basename($file_name);
-		open(OUTPUTFILE,'>',$new_file_name) or die "can't open $file_name : $!\n";
-		
-			foreach (<INPUTFILE>)
-			{
-				s/([.0-9]+)(\s*)$input_unit/(int($1*$multiplier*1000)\/1000).$output_unit/eg;
-				print OUTPUTFILE;
-			}
+open(INPUTFILE,'<',$ARGV[0]) or die "can't open $file_name : $!\n";
+$new_file_name = 'D' . basename($ARGV[0]);
 
-		close OUTPUTFILE;
-	close INPUTFILE;
+open(OUTPUTFILE,'>',$new_file_name) or die "can't open $file_name : $!\n";
+
+foreach ( <INPUTFILE> )
+{
+	s/([.0-9]+)(\s*)$input_unit/(int($1*$multiplier*1000)\/1000).$output_unit/eg;
+	print OUTPUTFILE;
 }
+
+close OUTPUTFILE;
+close INPUTFILE;
