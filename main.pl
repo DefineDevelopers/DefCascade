@@ -27,17 +27,26 @@ sub check_unit_name {
 print("Print unit name which is in input-css-file\n");
 $input_unit = <STDIN>;
 
+unless ( check_unit_name $input_unit ) {
+	print("Invalid unit name. Closing\n");
+	exit 2;
+}
+
 print("Print unit name which will be in output-css-file\n");
 $output_unit = <STDIN>;
+
+unless ( check_unit_name $output_unit ) {
+	print("Invalid unit name. Closing\n");
+	exit 2;
+}
 
 print('Print how many ',substr($output_unit, 0, -1), ' are now in one ', $input_unit);
 $multiplier = <STDIN>;
 
 chomp($input_unit,$output_unit,$multiplier);
 
-unless ($input_unit =~ m/^[a-z]+$/ && $output_unit =~ m/^[a-z]+$/ && $multiplier =~ m/^\d+(\.\d+)?$/)
-{
-	print("bad unit/multiplier name. Closing\n");
+unless ( $multiplier =~ m/^\d+(\.\d+)?$/ ) {
+	print("Invalid multiplier name. Closing\n");
 	exit 2;
 }
 
