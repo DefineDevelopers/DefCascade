@@ -16,6 +16,10 @@ my $input_unit;
 my $output_unit;
 my $multiplier;
 
+
+# sub check_unit_name { }
+# sub check_mul_num { }
+
 print("Print unit name which is in input-css-file\n");
 $input_unit = <STDIN>;
 
