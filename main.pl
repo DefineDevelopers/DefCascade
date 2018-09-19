@@ -4,9 +4,9 @@ use strict;
 use warnings;
 use File::Basename;
 
-if (($#ARGV + 1) == 0)
+if (($#ARGV + 1) != 1)
 {
-	print "Usage: perl main.pl <file_name1> <file_name2> ... \n";
+	print STDERR "USAGE: perl main.pl FILENAME\n";
 	exit 1;
 }
 
