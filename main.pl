@@ -22,7 +22,12 @@ sub check_unit_name {
 	unless ( $unit =~ m/^[a-z]+$/ ) { return; }
 	return 1;
 }
-# sub check_mul_num { }
+
+sub check_mul_num {
+	my $mult = $_[0];
+	unless ( $mult =~ m/^\d+(\.\d+)?$/ ) { return; }
+	return 1;
+}
 
 print("Print unit name which is in input-css-file\n");
 $input_unit = <STDIN>;
