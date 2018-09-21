@@ -10,12 +10,10 @@ if (($#ARGV + 1) != 1)
 	exit 1;
 }
 
-my $file_name;
 my $new_file_name;
 my $input_unit;
 my $output_unit;
 my $multiplier;
-
 
 sub check_unit_name {
 	my $unit = $_[0];
@@ -43,10 +41,10 @@ unless ( check_mul_num $multiplier ) { print("Invalid multiplier name. Closing\n
 
 chomp($input_unit,$output_unit,$multiplier);
 
-open(INPUTFILE,'<',$ARGV[0]) or die "can't open $file_name : $!\n";
-$new_file_name = 'D' . basename($ARGV[0]);
+open(INPUTFILE,'<',$ARGV[0]) or die "can't open $ARGV[0] : $!\n";
 
-open(OUTPUTFILE,'>',$new_file_name) or die "can't open $file_name : $!\n";
+$new_file_name = 'D' . basename($ARGV[0]);
+open(OUTPUTFILE,'>',$new_file_name) or die "can't open $new_file_name : $!\n";
 
 foreach ( <INPUTFILE> )
 {
