@@ -31,29 +31,17 @@ sub check_mul_num {
 
 print("Print unit name which is in input-css-file\n");
 $input_unit = <STDIN>;
-
-unless ( check_unit_name $input_unit ) {
-	print("Invalid unit name. Closing\n");
-	exit 2;
-}
+unless ( check_unit_name $input_unit ) { print("Invalid unit name. Closing\n"); exit 2; }
 
 print("Print unit name which will be in output-css-file\n");
 $output_unit = <STDIN>;
-
-unless ( check_unit_name $output_unit ) {
-	print("Invalid unit name. Closing\n");
-	exit 2;
-}
+unless ( check_unit_name $output_unit ) { print("Invalid unit name. Closing\n"); exit 2; }
 
 print('Print how many ',substr($output_unit, 0, -1), ' are now in one ', $input_unit);
 $multiplier = <STDIN>;
+unless ( check_mul_num $multiplier ) { print("Invalid multiplier name. Closing\n"); exit 2; }
 
 chomp($input_unit,$output_unit,$multiplier);
-
-unless ( check_mul_num $multiplier ) {
-	print("Invalid multiplier name. Closing\n");
-	exit 2;
-}
 
 open(INPUTFILE,'<',$ARGV[0]) or die "can't open $file_name : $!\n";
 $new_file_name = 'D' . basename($ARGV[0]);
