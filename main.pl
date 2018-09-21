@@ -10,6 +10,8 @@ if (($#ARGV + 1) != 1)
 	exit 1;
 }
 
+open(INPUTFILE,'<',$ARGV[0]) or die "can't open $ARGV[0] : $!\n";
+
 my $new_file_name;
 my $input_unit;
 my $output_unit;
@@ -40,8 +42,6 @@ $multiplier = <STDIN>;
 unless ( check_mul_num $multiplier ) { print("Invalid multiplier name. Closing\n"); exit 2; }
 
 chomp($input_unit,$output_unit,$multiplier);
-
-open(INPUTFILE,'<',$ARGV[0]) or die "can't open $ARGV[0] : $!\n";
 
 $new_file_name = 'D' . basename($ARGV[0]);
 open(OUTPUTFILE,'>',$new_file_name) or die "can't open $new_file_name : $!\n";
