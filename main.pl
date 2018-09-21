@@ -47,6 +47,7 @@ unless ( check_mul_num $multiplier ) { print("Invalid multiplier name. Closing\n
 print("Print new file path\n");
 $new_file_path = <STDIN>;
 chomp($new_file_path);
+if ( -e $new_file_path ) { print("File $new_file_path already exists. Closing\n"); exit 3; }
 open(OUTPUTFILE,'>',$new_file_path) or die "can't open $new_file_path : $!\n";
 
 foreach ( <INPUTFILE> )
